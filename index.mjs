@@ -1,11 +1,6 @@
 import chalk from 'chalk';
 import fetch from 'node-fetch';
 
-// Full request
-// https://opendata.cwb.gov.tw/api/v1/rest/datastore/{dataid}?locationName={locationName}&elementName={elementName}&sort={sort}&startTime={startTime}&timeFrom={timeFrom}&timeTo={timeTo}
-// Docs: https://opendata.cwb.gov.tw/opendatadoc/CWB_Opendata_API_V1.2.pdf
-// Swagger: https://opendata.cwb.gov.tw/dist/opendata-swagger.html#/%E8%A7%80%E6%B8%AC/get_v1_rest_datastore_O_A0001_001
-
 const cwb = {
   baseUrl: 'https://opendata.cwb.gov.tw/api/v1/rest/datastore',
   key: process.env.CWB_KEY,
