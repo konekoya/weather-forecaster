@@ -16,10 +16,10 @@ Note that the forecast location is currently hardcoded in the source ([North dis
 
 ### Third-party API docs
 
-Possible parameters for CWB restful API
+Possible parameters for CWB restful API:
 
 ```js
 https://opendata.cwb.gov.tw/api/v1/rest/datastore/{dataid}?locationName={locationName}&elementName={elementName}&sort={sort}&startTime={startTime}&timeFrom={timeFrom}&timeTo={timeTo}
 ```
 
-for more info about their API, see the [docs](https://opendata.cwb.gov.tw/opendatadoc/CWB_Opendata_API_V1.2.pdf), or even test the API on [Swagger](https://opendata.cwb.gov.tw/dist/opendata-swagger.html#/%E8%A7%80%E6%B8%AC/get_v1_rest_datastore_O_A0001_001)
+for more info about their API, see the [docs](https://opendata.cwb.gov.tw/opendatadoc/CWB_Opendata_API_V1.2.pdf), you can even test the API on [Swagger](https://opendata.cwb.gov.tw/dist/opendata-swagger.html#/%E8%A7%80%E6%B8%AC/get_v1_rest_datastore_O_A0001_001)
