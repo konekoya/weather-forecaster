@@ -28,7 +28,8 @@ const ifttt = {
 
   const weatherJson = await weatherData.json();
   const report = parseJson(weatherJson);
-  const forecast = `今日天氣預報: ${report.elementValue[0].value}`;
+  const predictTime = `${report.startTime} - ${report.endTime.split(' ')[1]}`;
+  const forecast = `🪧 天氣預報: ${report.elementValue[0].value} ⏱ 預報時間: ${predictTime}`;
 
   // Send result to LINE notify
   await fetch(`${ifttt.baseUrl}/${ifttt.key}`, {
