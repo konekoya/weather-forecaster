@@ -27,14 +27,10 @@ const ifttt = {
   );
 
   const weatherJson = await weatherData.json();
-  const hsinchuCity = weatherJson.records.locations[0].location;
-  const { weatherElement } = hsinchuCity.find((l) => l.locationName === '北區');
-  const [today] = weatherElement
-    .find((el) => el.elementName == 'WeatherDescription')
-    .time.slice(0, 1);
+  const report = parseJson(weatherJson);
+  const forecast = `今日天氣預報: ${report.elementValue[0].value}`;
 
-  const forecast = `今日天氣預報: ${today.elementValue[0].value}`;
-
+  // Send result to LINE notify
   await fetch(`${ifttt.baseUrl}/${ifttt.key}`, {
     method: 'POST',
     body: JSON.stringify({
@@ -43,3 +39,13 @@ const ifttt = {
     headers: { 'Content-Type': 'application/json' },
   });
 })();
+
+function parseJson(json) {
+  const hsinchuCity = json.records.locations[0].location;
+  const { weatherElement } = hsinchuCity.find((l) => l.locationName === '北區');
+  const [report] = weatherElement
+    .find((el) => el.elementName == 'WeatherDescription')
+    .time.slice(0, 1);
+
+  return report;
+}
