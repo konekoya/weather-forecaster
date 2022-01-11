@@ -1,4 +1,4 @@
-# Weather bot
+# Weather forecaster
 
 A simple app that collect some weather data from [Taiwan Center Weather Bureau](https://www.cwb.gov.tw/V8/C/) and send the weather forecast to a LINE chat
 
