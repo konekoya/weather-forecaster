@@ -1,10 +1,10 @@
 # Weather forecaster
 
-A simple app that collect some weather data from [Taiwan Center Weather Bureau](https://www.cwb.gov.tw/V8/C/) and send the weather forecast to a LINE chat
+A simple app that fetches weather data from [Taiwan Center Weather Bureau](https://www.cwb.gov.tw/V8/C/) and send the weather forecast to a LINE chat
 
 ### Usage
 
-1. Rename the `example.env` to `.env` and replace the keys inside with your own.
+1. Copy and rename the `example.env` to `.env` and then replace the keys inside it with your own.
 2. Run the app via `npm`: `npm run start`
 
 Example output:
