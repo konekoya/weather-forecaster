@@ -43,7 +43,7 @@ const ifttt = {
 
 function parseJson(json) {
   const hsinchuCity = json.records.locations[0].location;
-  const { weatherElement } = hsinchuCity.find((l) => l.locationName === '北區');
+  const { weatherElement } = hsinchuCity.find((l) => l.locationName === '東區');
   const [report] = weatherElement
     .find((el) => el.elementName == 'WeatherDescription')
     .time.slice(0, 1);
