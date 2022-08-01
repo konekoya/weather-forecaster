@@ -1,5 +1,5 @@
+import axios from 'axios';
 import chalk from 'chalk';
-import fetch from 'node-fetch';
 
 const cwb = {
   baseUrl: 'https://opendata.cwb.gov.tw/api/v1/rest/datastore',
@@ -22,22 +22,18 @@ const ifttt = {
     process.exit(1);
   }
 
-  const weatherData = await fetch(
+  const weatherData = await axios.get(
     `${cwb.baseUrl}/${cwb.dataId}?Authorization=${cwb.key}`
   );
 
-  const weatherJson = await weatherData.json();
+  const weatherJson = await weatherData.data;
   const report = parseJson(weatherJson);
   const predictTime = `${report.startTime} - ${report.endTime.split(' ')[1]}`;
   const forecast = `🪧 天氣預報: ${report.elementValue[0].value} ⏱ 預報時間: ${predictTime}`;
 
   // Send result to LINE notify
-  await fetch(`${ifttt.baseUrl}/${ifttt.key}`, {
-    method: 'POST',
-    body: JSON.stringify({
-      value1: forecast,
-    }),
-    headers: { 'Content-Type': 'application/json' },
+  await axios.post(`${ifttt.baseUrl}/${ifttt.key}`, {
+    value1: forecast,
   });
 })();
 
