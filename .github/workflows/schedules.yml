@@ -1,7 +1,9 @@
 name: Scheduled Report
 on:
   schedule:
-    - cron: 1 * * * *
+    - cron: 00 05 * * *
+    - cron: 00 07 * * *
+    - cron: 30 20 * * *
 
 jobs:
   build:
