@@ -2,3 +2,22 @@ name: Scheduled Report
 on:
   schedule:
     - cron: 1 * * * *
+
+jobs:
+  runs-on: ubuntu-latest
+  
+  strategy:
+      matrix:
+        node-version: [18.x]
+
+   steps:
+    - name: Check out
+      uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+    - run: npm install
+    - run: npm run start
+
