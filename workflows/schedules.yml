@@ -1,0 +1,4 @@
+name: Scheduled Report
+on:
+  schedule:
+    - cron: 1 * * * *
