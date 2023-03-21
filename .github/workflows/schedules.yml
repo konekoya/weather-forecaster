@@ -1,13 +1,16 @@
 name: Scheduled Report
 on:
+  push:
+
   schedule:
-    - cron: 00 05 * * *
+    - cron: 1 * * * *
     - cron: 00 07 * * *
     - cron: 30 20 * * *
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: report
     steps:
       - name: Check out
         uses: actions/checkout@v3
