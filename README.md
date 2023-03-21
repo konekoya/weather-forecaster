@@ -1,6 +1,6 @@
 # Weather forecaster
 
-A simple app that fetches weather data from [Taiwan Center Weather Bureau](https://www.cwb.gov.tw/V8/C/) and send the weather forecast to a LINE chat
+A simple app that fetches weather data from [Taiwan Center Weather Bureau](https://www.cwb.gov.tw/V8/C/) and send the weather forecast to a [LINE](https://notify-bot.line.me/en/) chat via [IFFF](https://ifttt.com/explore). The project is currently run on a [scheduled cron](https://github.com/konekoya/weather-forecaster/actions) by GitHub Actions
 
 ### Usage
 
@@ -9,10 +9,9 @@ A simple app that fetches weather data from [Taiwan Center Weather Bureau](https
 
 Example output:
 
-![Screen shot 2022-01-07 at 8.48.46 am image](https://i.imgur.com/v9hm6Tx.png)
+![Screenshot 2023-03-21 at 4.47.07 pm image](https://i.imgur.com/C9sN3Ci.png)
 
-Note that the forecast location is currently hardcoded in the source ([North district, Hsinchu](https://en.wikipedia.org/wiki/North_District,_Hsinchu)), as this is a very simple app built for my own. I'm not planning to expose any configuration just yet
-:)
+Note that the forecast location is currently hardcoded in the source ([East district, Hsinchu](https://en.wikipedia.org/wiki/East_District,_Hsinchu)), as this is a very simple app built for my own. I'm not planning to expose any configuration just yet
 
 ### Third-party API docs
 
