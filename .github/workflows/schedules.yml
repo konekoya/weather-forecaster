@@ -5,7 +5,10 @@ on:
   pull_request:
     branches: [master]
   schedule:
-    - cron: '0 */4 * * *'
+    # Schedule is using UTC time, we need to convert them to Taipei time 👇
+    - cron: 30 21 * * * # 5:30 AM
+    - cron: 0 23 * * * # 7:00 AM
+    - cron: 30 12 * * * # 20:30 PM
 
 jobs:
   build:
