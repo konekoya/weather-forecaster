@@ -32,9 +32,11 @@ const ifttt = {
   const forecast = `🪧 天氣預報: ${report.elementValue[0].value} ⏱ 預報時間: ${predictTime}`;
 
   // Send result to LINE notify
-  await axios.post(`${ifttt.baseUrl}/${ifttt.key}`, {
+  const res = await axios.post(`${ifttt.baseUrl}/${ifttt.key}`, {
     value1: forecast,
   });
+
+  console.log(res.data);
 })();
 
 function parseJson(json) {
