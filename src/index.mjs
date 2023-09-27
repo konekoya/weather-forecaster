@@ -12,32 +12,30 @@ const ifttt = {
   key: process.env.IFTTT_KEY,
 };
 
-(async () => {
-  if (!cwb.key || !ifttt.key) {
-    console.log(
-      chalk.red(
-        'Error: You need to supply auth keys in order to make the requests!'
-      )
-    );
-    process.exit(1);
-  }
-
-  const weatherData = await axios.get(
-    `${cwb.baseUrl}/${cwb.dataId}?Authorization=${cwb.key}`
+if (!cwb.key || !ifttt.key) {
+  console.log(
+    chalk.red(
+      'Error: You need to supply auth keys in order to make the requests!'
+    )
   );
+  process.exit(1);
+}
 
-  const weatherJson = await weatherData.data;
-  const report = parseJson(weatherJson);
-  const predictTime = `${report.startTime} - ${report.endTime.split(' ')[1]}`;
-  const forecast = `🪧 天氣預報: ${report.elementValue[0].value} ⏱ 預報時間: ${predictTime}`;
+const weatherData = await axios.get(
+  `${cwb.baseUrl}/${cwb.dataId}?Authorization=${cwb.key}`
+);
 
-  // Send result to LINE notify
-  const res = await axios.post(`${ifttt.baseUrl}/${ifttt.key}`, {
-    value1: forecast,
-  });
+const weatherJson = await weatherData.data;
+const report = parseJson(weatherJson);
+const predictTime = `${report.startTime} - ${report.endTime.split(' ')[1]}`;
+const forecast = `🪧 天氣預報: ${report.elementValue[0].value} ⏱ 預報時間: ${predictTime}`;
 
-  console.log(res.data);
-})();
+// Send result to LINE notify
+const res = await axios.post(`${ifttt.baseUrl}/${ifttt.key}`, {
+  value1: forecast,
+});
+
+console.log(res.data);
 
 function parseJson(json) {
   const hsinchuCity = json.records.locations[0].location;
