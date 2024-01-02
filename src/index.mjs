@@ -2,7 +2,7 @@ import axios from 'axios';
 import chalk from 'chalk';
 
 const cwb = {
-  baseUrl: 'https://opendata.cwb.gov.tw/api/v1/rest/datastore',
+  baseUrl: 'https://opendata.cwa.gov.tw/api/v1/rest/datastore',
   key: process.env.CWB_KEY,
   dataId: 'F-D0047-055',
 };
