@@ -1,16 +1,16 @@
 # Weather forecaster
 
-
-A simple app that fetches weather data from [Taiwan Center Weather Bureau](https://www.cwb.gov.tw/V8/C/) and send the weather forecast to a [LINE](https://notify-bot.line.me/en/) chat via [Pipedream](https://pipedream.com/). The project is currently run on a [scheduled cron](https://github.com/konekoya/weather-forecaster/actions) by GitHub Actions
+A simple app that fetches weather data from [Taiwan Center Weather Bureau](https://www.cwb.gov.tw/V8/C/) and send the weather forecast to a [LINE](https://notify-bot.line.me/en/) chat via [Notify API](https://notify-bot.line.me/doc/en/). And is triggered and run on a [scheduled cron](https://github.com/konekoya/weather-forecaster/actions) by GitHub Actions
 
 ### Usage
 
-1. Copy and rename the `example.env` to `.env` and then replace the key inside it with your own.
+1. Copy and rename the `example.env` to `.env` and then replace the keys inside it with your own. You will need to register a API key from [Taiwan Center Weather Bureau](https://www.cwb.gov.tw/V8/C/) and an API key from [Notify API](https://notify-bot.line.me/doc/en/)
 2. Run the app via `npm`: `npm run start`
+3. You can then hook this up with [GitHub action](https://docs.github.com/en/actions) to trigger the run and send the forecast at specific times
 
 Example output:
 
-![Screenshot 2023-03-21 at 4.47.07 pm image](https://i.imgur.com/C9sN3Ci.png)
+![Imgur](https://imgur.com/e6aMPRU.png)
 
 Note that the forecast location is currently hardcoded in the source ([East district, Hsinchu](https://en.wikipedia.org/wiki/East_District,_Hsinchu)), as this is a very simple app built for my own. I'm not planning to expose any configuration just yet
 
