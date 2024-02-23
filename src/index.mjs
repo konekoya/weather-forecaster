@@ -1,38 +1,35 @@
 import axios from 'axios';
 import chalk from 'chalk';
 
-const cwb = {
-  baseUrl: 'https://opendata.cwa.gov.tw/api/v1/rest/datastore',
-  key: process.env.CWB_KEY,
-  dataId: 'F-D0047-055',
-};
+const baseUrl = 'https://opendata.cwa.gov.tw/api/v1/rest/datastore';
+const cwbKey = process.env.CWB_KEY;
+const dataId = 'F-D0047-055';
+const webHook = 'https://eoeltjilalhnqum.m.pipedream.net';
 
-const ifttt = {
-  baseUrl: 'https://maker.ifttt.com/trigger/line/with/key',
-  key: process.env.IFTTT_KEY,
-};
-
-if (!cwb.key || !ifttt.key) {
+if (!cwbKey) {
   console.log(
     chalk.red(
-      'Error: You need to supply auth keys in order to make the requests!'
+      'Error: You need to supply CWB API key in order to make the requests!'
     )
   );
   process.exit(1);
 }
 
 const weatherData = await axios.get(
-  `${cwb.baseUrl}/${cwb.dataId}?Authorization=${cwb.key}`
+  `${baseUrl}/${dataId}?Authorization=${cwbKey}`
 );
 
 const weatherJson = await weatherData.data;
 const report = parseJson(weatherJson);
 const predictTime = `${report.startTime} - ${report.endTime.split(' ')[1]}`;
-const forecast = `🪧 天氣預報: ${report.elementValue[0].value} ⏱ 預報時間: ${predictTime}`;
+const forecast = `
+🪧 天氣預報: ${report.elementValue[0].value}
+⏱ 預報時間: ${predictTime}
+`;
 
 // Send result to LINE notify
-const res = await axios.post(`${ifttt.baseUrl}/${ifttt.key}`, {
-  value1: forecast,
+const res = await axios.post(webHook, {
+  message: forecast,
 });
 
 console.log(res.data);
