@@ -1,5 +1,6 @@
 # Weather forecaster
 
+
 A simple app that fetches weather data from [Taiwan Center Weather Bureau](https://www.cwb.gov.tw/V8/C/) and send the weather forecast to a [LINE](https://notify-bot.line.me/en/) chat via [Pipedream](https://pipedream.com/). The project is currently run on a [scheduled cron](https://github.com/konekoya/weather-forecaster/actions) by GitHub Actions
 
 ### Usage
