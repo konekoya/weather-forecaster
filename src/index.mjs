@@ -43,7 +43,7 @@ try {
 } catch (error) {
   console.log(chalk.red('😱😱😱 Failed to send weather forecast!'));
   console.log(error);
-  process.exit(error?.status ?? 1);
+  process.exit(1);
 }
 
 function parseJson(json) {
@@ -55,12 +55,12 @@ function parseJson(json) {
 
   const detail = report.elementValue[0].value
     .split('。')
-    .filter(Boolean)
-    .map((v) => `- ${v}`)
+    .filter(Boolean) // Remove empty string
+    .map((v) => `- ${v}`) // Format the report so it's easier to read
     .join('\n');
 
   return {
-    time: `${report.startTime} - ${report.endTime.split(' ')[1]}`,
     detail,
+    time: `${report.startTime} - ${report.endTime.split(' ')[1]}`,
   };
 }
