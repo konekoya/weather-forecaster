@@ -39,7 +39,7 @@ try {
     }
   );
 
-  console.log(chalk.green('✅ Successfully sent the report!'));
+  console.log(chalk.green('✅ Report sent!'));
 } catch (error) {
   console.log(chalk.red('😱😱😱 Failed to send weather forecast!'));
   console.log(error);
