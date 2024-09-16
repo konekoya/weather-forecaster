@@ -16,4 +16,4 @@ Note that the forecast location is currently hardcoded in the source ([East dist
 
 ### Third-party API docs
 
-for more info about their API, see the [docs](https://opendata.cwa.gov.tw/dataset/forecast/F-D0047-055), you can even test the API on [Swagger](https://opendata.cwa.gov.tw/dist/opendata-swagger.html?urls.primaryName=openAPI#/%E9%A0%90%E5%A0%B1/get_v1_rest_datastore_F_D0047_055)
+For more info about their API, see the [docs](https://opendata.cwa.gov.tw/dataset/forecast/F-D0047-055), you can even test the API on [Swagger](https://opendata.cwa.gov.tw/dist/opendata-swagger.html?urls.primaryName=openAPI#/%E9%A0%90%E5%A0%B1/get_v1_rest_datastore_F_D0047_055)
