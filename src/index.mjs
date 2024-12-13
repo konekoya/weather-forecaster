@@ -1,5 +1,6 @@
 import axios from 'axios';
 import chalk from 'chalk';
+import { format } from 'date-fns';
 
 const CWB_API_KEY = process.env.CWB_API_KEY;
 const LINE_API_KEY = process.env.LINE_NOTIFICATION_API_KEY;
@@ -47,20 +48,22 @@ try {
 }
 
 function parseJson(json) {
-  const hsinchuCity = json.records.locations[0].location;
-  const { weatherElement } = hsinchuCity.find((l) => l.locationName === '東區');
-  const [report] = weatherElement
-    .find((el) => el.elementName == 'WeatherDescription')
-    .time.slice(0, 1);
+  const hsinchu = json.records.Locations[0].Location;
+  const { WeatherElement } = hsinchu.find((l) => l.LocationName === '東區');
+  const [report] = WeatherElement.find(
+    (el) => el.ElementName == '天氣預報綜合描述'
+  ).Time.slice(0, 1);
 
-  const detail = report.elementValue[0].value
-    .split('。')
+  const detail = report.ElementValue[0].WeatherDescription.split('。')
     .filter(Boolean) // Remove empty string
     .map((v) => `- ${v}`) // Format the report so it's easier to read
     .join('\n');
 
-  return {
-    detail,
-    time: `${report.startTime} - ${report.endTime.split(' ')[1]}`,
-  };
+  console.log(report);
+
+  const dateFormat = 'dd MMM yyyy, hh a';
+  const start = format(new Date(report.StartTime), dateFormat);
+  const end = format(new Date(report.EndTime), dateFormat);
+
+  return { detail, time: `${start} - ${end}` };
 }
