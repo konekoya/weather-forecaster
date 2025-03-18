@@ -1,5 +1,7 @@
 # Weather forecaster
 
+[![Scheduled Report](https://github.com/konekoya/weather-forecaster/actions/workflows/schedules.yml/badge.svg)](https://github.com/konekoya/weather-forecaster/actions/workflows/schedules.yml)
+
 A simple app that fetches weather data from [Taiwan Center Weather Bureau](https://www.cwb.gov.tw/V8/C/) and sends the weather forecast to a [LINE](https://notify-bot.line.me/en/) chat via [Notify API](https://notify-bot.line.me/doc/en/). And is triggered and run on a [scheduled cron](https://github.com/konekoya/weather-forecaster/actions) by GitHub Actions
 
 ### Usage
