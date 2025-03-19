@@ -37,6 +37,10 @@ try {
         {
           type: 'text',
           text: forecast,
+          sender: {
+            name: 'Weather Bot',
+            iconUrl: './assets/image.png',
+          },
         },
       ],
       notificationDisabled: false,
