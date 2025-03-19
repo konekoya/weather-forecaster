@@ -4,9 +4,11 @@ import { format } from 'date-fns';
 
 const CWB_API_KEY = process.env.CWB_API_KEY;
 const LINE_API_KEY = process.env.LINE_NOTIFICATION_API_KEY;
-const BASE_URL = 'https://opendata.cwa.gov.tw/api/v1/rest/datastore';
+const LINE_USER_ID = process.env.LINE_USER_ID;
+const WEATHER_API_URL = 'https://opendata.cwa.gov.tw/api/v1/rest/datastore';
 const DATA_ID = 'F-D0047-055';
-const LINE_API_URL = 'https://notify-api.line.me/api/notify';
+
+const LINE_API_URL = 'https://api.line.me/v2/bot/message/push';
 
 if (!CWB_API_KEY) {
   console.log(
@@ -19,23 +21,30 @@ if (!CWB_API_KEY) {
 
 try {
   const weatherData = await axios.get(
-    `${BASE_URL}/${DATA_ID}?Authorization=${CWB_API_KEY}`
+    `${WEATHER_API_URL}/${DATA_ID}?Authorization=${CWB_API_KEY}`
   );
 
   const weatherJson = await weatherData.data;
   const { detail, time } = parseJson(weatherJson);
-  const forecast = `\n\n🪧 天氣預報: \n${detail}\n\n⏱ 預報時間: ${time}`;
+  const forecast = `🪧 天氣預報: \n${detail}\n\n⏱ 預報時間: ${time}`;
 
-  // Send result to LINE notify
+  // Send result to LINE
   axios.post(
     LINE_API_URL,
     {
-      message: forecast,
+      to: LINE_USER_ID,
+      messages: [
+        {
+          type: 'text',
+          text: forecast,
+        },
+      ],
+      notificationDisabled: false,
     },
     {
       headers: {
         Authorization: `Bearer ${LINE_API_KEY}`,
-        'Content-Type': 'multipart/form-data',
+        'Content-Type': 'application/json',
       },
     }
   );
