@@ -37,6 +37,11 @@ try {
         {
           type: 'text',
           text: forecast,
+          sender: {
+            name: 'Weather Bot',
+            iconUrl:
+              'https://konekoya.github.io/weather-forecaster/bot-icon.png',
+          },
         },
       ],
       notificationDisabled: false,
