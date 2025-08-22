@@ -22,5 +22,5 @@ jobs:
       - name: Create env file
         run: |
           echo "${{ secrets.ENV_FILE }}" > .env
-      - run: npm install
+      - run: npm ci
       - run: npm run start

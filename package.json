@@ -2,16 +2,19 @@
   "name": "weather-forecaster",
   "version": "1.0.0",
   "main": "index.mjs",
+  "type": "module",
   "scripts": {
-    "start": "node --require dotenv/config ./src/index.mjs"
+    "start": "tsx --env-file .env src/index.ts"
   },
   "keywords": [],
   "author": "konekoya",
   "license": "MIT",
   "dependencies": {
+    "@types/node": "^24.3.0",
     "axios": "^1.11.0",
     "chalk": "^5.6.0",
     "date-fns": "^4.1.0",
-    "dotenv": "^17.2.1"
+    "dotenv": "^17.2.1",
+    "tsx": "^4.20.4"
   }
 }
