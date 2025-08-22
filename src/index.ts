@@ -1,11 +1,15 @@
 import axios from 'axios';
 import chalk from 'chalk';
 import { format } from 'date-fns';
+import { WeatherJson } from './types';
 
-const CWB_API_KEY: string | undefined = process.env.CWB_API_KEY;
-const LINE_API_KEY: string | undefined = process.env.LINE_NOTIFICATION_API_KEY;
-const LINE_USER_ID: string | undefined = process.env.LINE_USER_ID;
+const CWB_API_KEY = process.env.CWB_API_KEY;
+const LINE_API_KEY = process.env.LINE_NOTIFICATION_API_KEY;
+const LINE_USER_ID = process.env.LINE_USER_ID;
 const WEATHER_API_URL = 'https://opendata.cwa.gov.tw/api/v1/rest/datastore';
+
+// 鄉鎮天氣預報-單一鄉鎮市區預報資料-新竹市未來1週天氣預報
+// https://opendata.cwa.gov.tw/dataset/forecast/F-D0047-055
 const DATA_ID = 'F-D0047-055';
 
 const LINE_API_URL = 'https://api.line.me/v2/bot/message/push';
@@ -18,26 +22,6 @@ if (!CWB_API_KEY) {
   );
   process.exit(1);
 }
-
-type WeatherJson = {
-  records: {
-    Locations: Array<{
-      Location: Array<{
-        LocationName: string;
-        WeatherElement: Array<{
-          ElementName: string;
-          Time: Array<{
-            StartTime: string;
-            EndTime: string;
-            ElementValue: Array<{
-              WeatherDescription: string;
-            }>;
-          }>;
-        }>;
-      }>;
-    }>;
-  };
-};
 
 try {
   const weatherData = await axios.get(
@@ -83,6 +67,8 @@ try {
 
 function parseJson(json: WeatherJson): { detail: string; time: string } {
   const hsinchu = json.records.Locations[0].Location;
+
+  console.log(JSON.stringify(json, null, 2));
   const { WeatherElement } = hsinchu.find((l) => l.LocationName === '東區')!;
   const [report] = WeatherElement.find(
     (el) => el.ElementName == '天氣預報綜合描述'
