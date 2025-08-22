@@ -6,7 +6,7 @@ A simple app that fetches weather data from the [Taiwan Central Weather Bureau](
 
 ## Usage
 
-1. Copy and rename `example.env` to `.env`, then replace the placeholder values with your own API keys. You will need to register for an API key from the [Taiwan Central Weather Bureau](https://www.cwb.gov.tw/V8/C/) and another from the [LINE Notify API](https://notify-bot.line.me/doc/en/).
+1. Copy and rename `example.env` to `.env`, then replace the placeholder values with your API keys. You will need to register for an API key from the [Taiwan Central Weather Bureau](https://www.cwb.gov.tw/V8/C/) and another from the [LINE Notify API](https://notify-bot.line.me/doc/en/).
 2. Run the app using npm: `npm run start`
 3. Optionally, you can set up a [GitHub Action](https://docs.github.com/en/actions) to trigger the app and send the forecast at specific times automatically.
 
