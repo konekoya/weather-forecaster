@@ -4,8 +4,9 @@
   "main": "index.mjs",
   "type": "module",
   "scripts": {
-    "start": "tsx --env-file .env src/index.ts",
-    "dev": "tsx watch --env-file .env src/server.ts"
+    "start": "tsx src/server.ts",
+    "dev": "tsx watch --env-file .env src/server.ts",
+    "notify": "tsx --env-file .env src/index.ts"
   },
   "keywords": [],
   "author": "konekoya",
