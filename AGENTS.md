@@ -24,10 +24,9 @@ Example local run: `CWB_API_KEY=... LINE_NOTIFICATION_API_KEY=... LINE_USER_ID=.
 - Prefer small, pure functions; keep API interactions in dedicated modules.
 
 ## Testing Guidelines
-- No test suite yet. If adding tests, prefer Vitest or Jest.
-- Place tests under `src/__tests__/` and name `*.test.ts`.
+- Tests use Vitest and live under `src/__tests__/` as `*.test.ts`.
+- Run the test suite with `npm test`.
 - Aim for coverage on JSON parsing and message formatting.
-- Add `"test": "vitest"` (or `jest`) to `package.json` and wire CI as needed.
 
 ## Commit & Pull Request Guidelines
 - Commits: imperative mood, concise subject; include scope when helpful (e.g., `feat(parser): format report`).

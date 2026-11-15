@@ -67,6 +67,12 @@ The workflow can also be run manually from the Actions tab.
 
 The message is pushed to LINE with a formatted summary and time range for the forecast window.
 
+The forecast includes rule-based clothing and umbrella advice when the corresponding
+weather values are available. Adjust the thresholds and wording in `src/services/advice.ts`.
+Missing rain probability produces no umbrella advice.
+
+Run the offline test suite with `npm test`.
+
 ![Forecast Example](https://i.imgur.com/LIxmzXb.png)
 
 > The forecast location is currently hardcoded to [Hsinchu City — East District](https://en.wikipedia.org/wiki/East_District,_Hsinchu), as the app is built for personal use.
