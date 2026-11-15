@@ -57,6 +57,12 @@ Create a `.env` file with the following keys:
 
 This repo includes a workflow at `.github/workflows/schedules.yml` that runs on a schedule. It executes `npm run notify` to push the daily forecast.
 
+GitHub disables scheduled workflows in public repositories after 60 days without repository activity.
+A keepalive job re-enables this workflow on every scheduled run, but this is an unverified mitigation:
+GitHub does not document whether enabling a workflow resets the inactivity timer. If it stops, use
+the **Enable workflow** button in the Actions tab or run `gh workflow enable schedules.yml`.
+The workflow can also be run manually from the Actions tab.
+
 ## Output
 
 The message is pushed to LINE with a formatted summary and time range for the forecast window.
