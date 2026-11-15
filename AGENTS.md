@@ -7,6 +7,7 @@
 - Root: `package.json`, `tsconfig.json`, `.env` (local), `example.env` (template).
 
 ## Build, Test, and Development Commands
+- Requires Node.js 24 or newer.
 - `npm install` — install dependencies for local development.
 - `npm run start` — run the app via `tsx`, loading variables from `.env`.
 - `npm ci` — clean, reproducible install used in CI.

@@ -7,7 +7,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "dist",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "baseUrl": "./",
     "paths": {
       "*": ["node_modules/*"]

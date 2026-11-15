@@ -10,6 +10,8 @@ It supports two modes:
 
 ## Quick start
 
+Prerequisite: Node.js 24 or newer.
+
 1.  Copy `example.env` to `.env` and fill in values.
 2.  Install dependencies:
     ```bash
