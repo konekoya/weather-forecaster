@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "tsx --env-file .env src/index.ts",
-    "dev": "tsx watch --env-file .env src/server.ts"
+    "dev": "tsx watch --env-file .env src/server.ts",
+    "test": "vitest run"
   },
   "keywords": [],
   "author": "konekoya",
@@ -21,5 +22,8 @@
   },
   "engines": {
     "node": ">=24"
+  },
+  "devDependencies": {
+    "vitest": "^5.1.0"
   }
 }
