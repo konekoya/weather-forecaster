@@ -1,5 +1,6 @@
 name: Scheduled Report
 on:
+  workflow_dispatch:
   push:
     branches: [master]
   pull_request:
@@ -11,6 +12,17 @@ on:
     - cron: 30 12 * * * # 20:30 PM
 
 jobs:
+  keepalive:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: Keep scheduled workflow enabled
+        run: gh workflow enable schedules.yml --repo "$GITHUB_REPOSITORY"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
   build:
     runs-on: ubuntu-latest
     environment: report
